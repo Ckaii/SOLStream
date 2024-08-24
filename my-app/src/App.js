@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import VideoPlayer from './VideoPlayer';
 import './App.css';
@@ -17,25 +18,31 @@ const videos = [
     comments: 56,
     shares: 20,
   },
-  // 更多视频...
+  // Add more video objects here...
 ];
 
+
+const user = {
+username: 'JohnDoe',
+email: 'johndoe@example.com',
+};
+
 function App() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleScroll = (direction) => {
-    if (direction === 'up' && currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else if (direction === 'down' && currentIndex < videos.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
+const handleScroll = (direction) => {
+  if (direction === 'up' && currentIndex > 0) {
+    setCurrentIndex(currentIndex - 1);
+  } else if (direction === 'down' && currentIndex < videos.length - 1) {
+    setCurrentIndex(currentIndex + 1);
+  }
+};
 
-  return (
-    <div className="app" onWheel={(e) => handleScroll(e.deltaY > 0 ? 'down' : 'up')}>
-      <VideoPlayer video={videos[currentIndex]} />
-    </div>
-  );
+return (
+  <div className="app" onWheel={(e) => handleScroll(e.deltaY > 0 ? 'down' : 'up')}>
+    <VideoPlayer video={videos[currentIndex]} user={user} />
+  </div>
+);
 }
 
-export default App
+export default App;
