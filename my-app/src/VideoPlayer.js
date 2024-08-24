@@ -31,6 +31,19 @@ function VideoPlayer({ video }) {
           <ShareIcon /> {video.shares}
         </IconButton>
       </div>
+      <div className="product__container">
+        <img src="https://via.placeholder.com/100" alt="Product" className="product__image" />
+        <Button
+          variant="contained"
+          color="primary"
+          href="https://example.com/product"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="product__button"
+        >
+          Buy Now
+        </Button>
+      </div>
       <div className="videoPlayer__bottomNavigation">
         <IconButton>
           <HomeIcon />
@@ -41,22 +54,6 @@ function VideoPlayer({ video }) {
         <IconButton>
           <PersonIcon />
         </IconButton>
-      </div>
-      <div className="videoPlayer__product">
-        <img src="https://via.placeholder.com/100" alt="Product" className="product__image" />
-        <div className="product__info">
-          <p className="product__price">$99.99</p>
-          <Button
-            variant="contained"
-            color="primary"
-            href="https://example.com/product"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="product__button"
-          >
-            Buy Now
-          </Button>
-        </div>
       </div>
     </div>
   );
