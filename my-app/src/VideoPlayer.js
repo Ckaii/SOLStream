@@ -19,15 +19,20 @@ function VideoPlayer({ video }) {
     }, 3000); // Notification disappears after 3 seconds
   };
 
+  const handleVideoEnd = () => {
+    handleEarnSol(); // Trigger notification when video ends
+  };
+
   return (
     <div className="videoPlayer">
       <ReactPlayer
         url={video.url}
         playing
-        loop
+        loop={false}  // Video will not loop
         width="100%"
         height="100%"
         className="reactPlayer"
+        onEnded={handleVideoEnd} // Trigger when video ends
       />
       <div className="videoPlayer__actions">
         <IconButton>
@@ -54,9 +59,6 @@ function VideoPlayer({ video }) {
         </Button>
       </div>
 
-      {showNotification && (
-        <div className="coin"></div>
-      )}
       {showNotification && (
         <div className="notification">
           +0.01 SOL Earned!
