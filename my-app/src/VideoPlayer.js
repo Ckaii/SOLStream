@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import './VideoPlayer.css';
 import { IconButton, Button } from '@mui/material';
@@ -10,6 +10,15 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import PersonIcon from '@mui/icons-material/Person';
 
 function VideoPlayer({ video }) {
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleEarnSol = () => {
+    setShowNotification(true);
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 3000); // Notification disappears after 3 seconds
+  };
+
   return (
     <div className="videoPlayer">
       <ReactPlayer
@@ -27,7 +36,7 @@ function VideoPlayer({ video }) {
         <IconButton>
           <CommentIcon /> {video.comments}
         </IconButton>
-        <IconButton>
+        <IconButton onClick={handleEarnSol}>
           <ShareIcon /> {video.shares}
         </IconButton>
       </div>
@@ -44,6 +53,16 @@ function VideoPlayer({ video }) {
           Buy Now
         </Button>
       </div>
+
+      {showNotification && (
+        <div className="coin"></div>
+      )}
+      {showNotification && (
+        <div className="notification">
+          +0.01 SOL Earned!
+        </div>
+      )}
+
       <div className="videoPlayer__bottomNavigation">
         <IconButton>
           <HomeIcon />
